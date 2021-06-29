@@ -87,5 +87,5 @@ if __name__=="__main__":
   
   print('\n\n==========================================================\n\n')
   print('Pick the one most likely to get your identity stolen\n\n\n')
-  for password in passwords:
-    print('\n' + password + '\n')      
+  for i in range(10):
+    print('\n' + passwords[i] + '\n')      
