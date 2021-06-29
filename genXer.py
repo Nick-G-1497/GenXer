@@ -4,6 +4,9 @@ import random
 from datetime import datetime
 import string
 import sys
+import time
+from loadbar import LoadBar
+
 
 
 if __name__=="__main__":
@@ -11,10 +14,10 @@ if __name__=="__main__":
   letters= string.ascii_lowercase
   upper = string.ascii_uppercase
   number = '1234567890'
-  seed =  int(sys.argv[1]) % 69
-  length = int(sys.argv[2])
+  seed =  int(input("Insert Seed: " )) % 69
+  length = int(input("Password Length: "))
 
-  aggregate = special + letters + upper + number
+  aggregate = letters + number + special + upper
 
   art = '''=======================================\n
         GenXer - a mediocre password generator\n 
@@ -63,17 +66,26 @@ if __name__=="__main__":
   # This ASCII pic can be found at
   # https://asciiart.website/index.php?art=people/naked%20ladies
 
-
   print(art)
 
   random.seed(seed)
 
-  password = ''
+  passwords= []
 
   for i in range(0,length):
 
-      password=''.join([random.choice(aggregate) for n in range(length)])
-      
-  print('\n' + password + '\n')
+      p = ''.join([random.choice(aggregate) for n in range(length)])
+      passwords.append(p)
+  
 
-      
+  bar = LoadBar(max=100)
+  bar.start()
+  for i in range(100):
+      time.sleep(random.choice([.01,.001,.1,1]))
+      bar.update(step=i)
+  bar.end()
+  
+  print('\n\n==========================================================\n\n')
+  print('Pick the one most likely to get your identity stolen\n\n\n')
+  for password in passwords:
+    print('\n' + password + '\n')      
