@@ -14,12 +14,8 @@ if __name__=="__main__":
   letters= string.ascii_lowercase
   upper = string.ascii_uppercase
   number = '1234567890'
-  seed =  int(input("Insert Seed: " )) % 69
-  length = int(input("Password Length: "))
 
-  aggregate = letters + number + special + upper
-
-  art = '''=======================================\n
+  art = '''============================================================================================\n
         GenXer - a mediocre password generator\n 
                       .-'-'`-.               .-'`-`-.
                   .-'-       \             /       -`-.
@@ -56,7 +52,7 @@ if __name__=="__main__":
         :F_P:            .' |/||||/  \||||\| `.            :F_P:
         ---._________.---'   ` \|''    ``|/ '   `---._________.---
 
-        \n\n What a fucking bleak world we live in?
+        \n\n 
 
 
   '''
@@ -68,9 +64,18 @@ if __name__=="__main__":
 
   print(art)
 
+  seed =  int(input("Insert Seed: " )) % 69
+  length = int(input("Password Length: "))
+
+  aggregate = letters + number + special + upper
+
+
+
   random.seed(seed)
 
   passwords= []
+
+  print('\n\nWhat a fucking bleak world we live in?\n\n')
 
   for i in range(0,length):
 
@@ -88,4 +93,4 @@ if __name__=="__main__":
   print('\n\n==========================================================\n\n')
   print('Pick the one most likely to get your identity stolen\n\n\n')
   for i in range(10):
-    print('\n' + passwords[i] + '\n')      
+      print('\n' + passwords[-i] + '\n')      
